@@ -6,20 +6,13 @@ require '../Utilities/ConfigRead'
 class BaseClass < Test::Unit::TestCase
 
   def setup
-
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_option(:detach, true)
     Selenium::WebDriver::Chrome.driver_path="../Driver/chromedriver.exe"
-    @@browser = Watir::Browser.new :chrome
+    @@browser = Watir::Browser.new :chrome, :options => options
     @@browser.window.maximize
     config=ReadConfig.new
     @@browser.goto config.readconfigdata("applicationURL")
-  end
-
-  def teardown
-    @@browser.close
-  end
-
-  def testCase1
-
   end
 
 end

@@ -1,9 +1,8 @@
 require 'watir'
 require 'selenium-webdriver'
 
-
-
-
+options = Selenium::WebDriver::Chrome::Options.new
+options.add_option(:detach, true)
 Selenium::WebDriver::Chrome.driver_path="G:/chromedriver.exe"
 browser = Watir::Browser.new :chrome, :options => options
 
